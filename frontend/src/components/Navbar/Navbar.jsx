@@ -1,5 +1,5 @@
-import React from "react";
-import { FaCaretDown, FaUser } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaCaretDown, FaUser, FaBars, FaTimes, FaSearch } from "react-icons/fa";
 
 const NavLinks = [
   {
@@ -36,42 +36,63 @@ const DropdownLinks = [
     link: "/#",
   },
 ];
+
 const Navbar = ({ HandlePopup }) => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const toggleSearch = () => {
+    setSearchOpen(!searchOpen);
+  };
+
   return (
     <>
-      <div data-aos="fade" className="bg-white shadow-md">
-        <div className="container flex justify-between py-4 sm:py-3">
+      <div data-aos="fade" className="bg-white shadow-md fixed w-full z-50">
+        <div className="container flex justify-between items-center py-4 sm:py-3">
           {/* logo section  */}
-          <div className="font-bold text-3xl">Logo</div>
+          <div className="font-bold text-3xl text-primary font-cursive cursor-pointer select-none">
+            GoodFood
+          </div>
+
+          {/* search bar for desktop */}
+          <div className="hidden md:flex items-center border border-gray-300 rounded-md px-2 py-1">
+            <input
+              type="text"
+              placeholder="Search food..."
+              className="outline-none px-2 py-1 w-48"
+            />
+            <FaSearch className="text-gray-500 cursor-pointer" />
+          </div>
+
           {/* Navlinks section */}
-          <div>
+          <div className="hidden md:block">
             <ul className="flex gap-10 items-center">
               {NavLinks.map(({ id, name, link }) => (
                 <li key={id}>
                   <a
                     href={link}
-                    className="hidden md:inline-block hover:text-primary text-xl font-semibold"
+                    className="hover:text-primary text-xl font-semibold"
                   >
                     {name}
                   </a>
                 </li>
               ))}
 
-              {/* simple dropdown and links */}
-              <li className="hidden md:block cursor-pointer group">
+              {/* dropdown and links */}
+              <li className="relative cursor-pointer group">
                 <a
                   href="/#"
-                  className="inline-block hover:text-primary text-xl font-semibold"
+                  className="inline-block hover:text-primary text-xl font-semibold flex items-center gap-1 py-2"
                 >
-                  <div className="flex items-center gap-[2px] py-2">
-                    Dropdown
-                    <span>
-                      <FaCaretDown className="group-hover:rotate-180 duration-300" />
-                    </span>
-                  </div>
+                  Categories
+                  <FaCaretDown className="group-hover:rotate-180 duration-300" />
                 </a>
                 {/* Dropdown section */}
-                <div className="absolute z-[9999] hidden group-hover:block w-[200px] bg-white text-black shadow-md p-2">
+                <div className="absolute z-[9999] hidden group-hover:block w-[200px] bg-white text-black shadow-md p-2 rounded-md">
                   <ul>
                     {DropdownLinks.map(({ id, name, link }) => (
                       <li key={id}>
@@ -86,11 +107,12 @@ const Navbar = ({ HandlePopup }) => {
                   </ul>
                 </div>
               </li>
+
               {/* Login button section */}
               <li>
                 <button
                   onClick={HandlePopup}
-                  className="flex justify-center items-center gap-2 bg-secondary text-xl h-[40px] text-white px-2  md:px-5 py-2 hover:scale-105 duration-300"
+                  className="flex justify-center items-center gap-2 bg-secondary text-xl h-[40px] text-white px-2 md:px-5 py-2 hover:scale-105 duration-300 rounded-md"
                 >
                   <FaUser />
                   My Account
@@ -98,7 +120,86 @@ const Navbar = ({ HandlePopup }) => {
               </li>
             </ul>
           </div>
+
+          {/* mobile menu button */}
+          <div className="md:hidden flex items-center gap-4">
+            <button
+              onClick={toggleSearch}
+              className="text-xl text-gray-600 hover:text-primary"
+              aria-label="Search"
+            >
+              <FaSearch />
+            </button>
+            <button
+              onClick={toggleMobileMenu}
+              className="text-2xl text-gray-600 hover:text-primary"
+              aria-label="Menu"
+            >
+              {mobileMenuOpen ? <FaTimes /> : <FaBars />}
+            </button>
+          </div>
         </div>
+
+        {/* mobile search bar */}
+        {searchOpen && (
+          <div className="md:hidden px-4 pb-4">
+            <input
+              type="text"
+              placeholder="Search food..."
+              className="w-full border border-gray-300 rounded-md px-2 py-1 outline-none"
+            />
+          </div>
+        )}
+
+        {/* mobile menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-white shadow-md px-4 py-4">
+            <ul className="flex flex-col gap-4">
+              {NavLinks.map(({ id, name, link }) => (
+                <li key={id}>
+                  <a
+                    href={link}
+                    className="hover:text-primary text-xl font-semibold block"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {name}
+                  </a>
+                </li>
+              ))}
+              <li className="cursor-pointer group relative">
+                <div className="flex items-center justify-between hover:text-primary text-xl font-semibold py-2">
+                  Categories
+                  <FaCaretDown />
+                </div>
+                <ul className="pl-4 mt-2">
+                  {DropdownLinks.map(({ id, name, link }) => (
+                    <li key={id}>
+                      <a
+                        href={link}
+                        className="hover:text-primary text-lg font-semibold block py-1"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+              <li>
+                <button
+                  onClick={() => {
+                    HandlePopup();
+                    setMobileMenuOpen(false);
+                  }}
+                  className="flex justify-center items-center gap-2 bg-secondary text-xl h-[40px] text-white px-2 py-2 rounded-md hover:scale-105 duration-300 w-full"
+                >
+                  <FaUser />
+                  My Account
+                </button>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
     </>
   );

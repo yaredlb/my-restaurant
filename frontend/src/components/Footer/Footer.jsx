@@ -1,7 +1,7 @@
 import React from "react";
 import { IoLocationSharp } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
-import { FaPhone } from "react-icons/fa";
+import { FaPhone, FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -17,7 +17,7 @@ const Footer = () => {
           </h1>
 
           {/* grid section  */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-14 border-b-2 border-white pb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-14 border-b-2 border-white pb-6">
             {/* Address section  */}
             <div className="text-center space-y-4">
               <div className="flex justify-center">
@@ -32,8 +32,8 @@ const Footer = () => {
                 <MdEmail className="text-5xl" />
               </div>
               <div>
-                <p>info@myrestaurant.com</p>
-                <p>orders@myrestaurant.com</p>
+                <p>info@goodfood.com</p>
+                <p>orders@goodfood.com</p>
               </div>
             </div>
 
@@ -43,20 +43,38 @@ const Footer = () => {
                 <FaPhone className="text-5xl" />
               </div>
               <div>
-                <p>+91 9643224232 - Sales and Services</p>
-                <p>+91 9623423436 - Hiring Queries</p>
-                <p>+91 2345232445 - Whatsapp</p>
+                <p>+1 212-555-1234 - Sales and Services</p>
+                <p>+1 212-555-5678 - Hiring Queries</p>
+                <p>+1 212-555-9012 - WhatsApp</p>
+              </div>
+            </div>
+
+            {/* Social media section */}
+            <div className="text-center space-y-4">
+              <h2 className="text-xl font-semibold">Follow Us</h2>
+              <div className="flex justify-center gap-6 text-yellow text-2xl">
+                <a href="#" aria-label="Facebook" className="hover:text-primary">
+                  <FaFacebookF />
+                </a>
+                <a href="#" aria-label="Twitter" className="hover:text-primary">
+                  <FaTwitter />
+                </a>
+                <a href="#" aria-label="Instagram" className="hover:text-primary">
+                  <FaInstagram />
+                </a>
               </div>
             </div>
           </div>
           {/* copyright section  */}
-          <div className="flex justify-between p-4 items-center">
-            <p className="text-sm text-white/80">
-              &copy; 2025 My Restaurant. All rights reserved.
-            </p>
+          <div className="flex flex-col sm:flex-row justify-between p-4 items-center text-sm text-white/80 gap-4">
+            <p>&copy; 2025 GoodFood. All rights reserved.</p>
             <div className="flex items-center gap-6">
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms & Conditions</a>
+              <a href="#" className="hover:underline">
+                Privacy Policy
+              </a>
+              <a href="#" className="hover:underline">
+                Terms & Conditions
+              </a>
             </div>
           </div>
         </div>
