@@ -27,25 +27,25 @@ const testimonials = [
 const Banner = () => {
   return (
     <>
-      <div className="container py-14 relative">
-        <div className="relative z-20">
+      <div className="container py-20 relative">
+        <div className="relative z-30">
           <h1
             data-aos="fade-up"
             data-aos-delay="300"
-            className="py-8 tracking-wider text-2xl font-semibold text-dark text-center"
+            className="py-10 tracking-wide text-4xl font-extrabold text-dark text-center"
           >
             Taste the Healthy Difference
           </h1>
           {/* text content section */}
-          <div className="space-y-10">
+          <div className="space-y-12 max-w-4xl mx-auto">
             <div
               data-aos="fade-up"
               data-aos-delay="500"
-              className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-10"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-8 py-12"
             >
               <div>
-                <p>
-                  We know that <span className="text-primary">time</span> is the
+                <p className="text-lg leading-relaxed">
+                  We know that <span className="text-primary font-semibold">time</span> is the
                   greatest value in the modern world. Our healthy meal plan
                   delivery service GoodFood in New York is the answer for those who
                   want to eat healthily, saving time for buying food and
@@ -53,7 +53,7 @@ const Banner = () => {
                 </p>
               </div>
               <div>
-                <p>
+                <p className="text-lg leading-relaxed">
                   Enjoy exclusive weekly offers and personalized meal plans
                   tailored to your taste and dietary needs.
                 </p>
@@ -65,24 +65,24 @@ const Banner = () => {
             data-aos="fade-up"
             data-aos-delay="500"
             data-aos-offset="0"
-            className="flex justify-center mt-10 sm:mt-14"
+            className="flex justify-center mt-16 sm:mt-20"
           >
             <PrimaryButton />
           </div>
 
           {/* testimonials section */}
-          <div data-aos="fade-up" data-aos-delay="700" className="mt-20">
-            <h2 className="text-3xl font-semibold text-center mb-8">
+          <div data-aos="fade-up" data-aos-delay="700" className="mt-24 max-w-5xl mx-auto">
+            <h2 className="text-4xl font-extrabold text-center mb-10">
               What Our Customers Say
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
               {testimonials.map(({ id, name, text }) => (
                 <div
                   key={id}
-                  className="p-6 border rounded-md shadow-md bg-white hover:shadow-lg transition-shadow duration-300"
+                  className="p-8 border rounded-md shadow-md bg-white hover:shadow-lg transition-shadow duration-300"
                 >
-                  <p className="mb-4 italic">"{text}"</p>
-                  <p className="font-semibold text-right">- {name}</p>
+                  <p className="mb-6 italic text-lg leading-relaxed">"{text}"</p>
+                  <p className="font-semibold text-right text-lg">- {name}</p>
                 </div>
               ))}
             </div>
@@ -91,38 +91,43 @@ const Banner = () => {
         {/* bg fruits pngs with hover scale */}
         <div
           data-aos="fade-right"
-          className="absolute top-0 -left-16 sm:bottom-0 sm:left-0 opacity-50 sm:opacity-100 transition-transform duration-300 hover:scale-110"
+          className="absolute top-0 -left-20 sm:bottom-0 sm:left-0 opacity-40 sm:opacity-80 transition-transform duration-300 hover:scale-110"
+          style={{ zIndex: 10 }}
         >
           <img
             data-aos="fade-right"
             src={leaf}
             alt=""
-            className="max-w-[160px]"
+            className="max-w-[140px]"
           />
         </div>
         <div
           data-aos="fade-right"
-          className="absolute -bottom-16 -left-16 sm:bottom-0 sm:left-0 opacity-50 sm:opacity-100 transition-transform duration-300 hover:scale-110"
+          className="absolute -bottom-20 -left-20 sm:bottom-0 sm:left-0 opacity-40 sm:opacity-80 transition-transform duration-300 hover:scale-110"
+          style={{ zIndex: 10 }}
         >
-          <img src={tomato} alt="" className="max-w-[280px]" />
+          <img src={tomato} alt="" className="max-w-[260px]" />
         </div>
         <div
           data-aos="fade-left"
-          className="absolute top-10 -right-16 sm:right-20 opacity-50 sm:opacity-100 transition-transform duration-300 hover:scale-110"
+          className="absolute top-10 -right-20 sm:right-24 opacity-40 sm:opacity-80 transition-transform duration-300 hover:scale-110"
+          style={{ zIndex: 10 }}
         >
-          <img src={lemon} alt="" className="max-w-[200px]" />
+          <img src={lemon} alt="" className="max-w-[180px]" />
         </div>
         <div
           data-aos="fade-left"
-          className="hidden sm:block absolute bottom-0 right-0 opacity-50 sm:opacity-100 transition-transform duration-300 hover:scale-110"
+          className="hidden sm:block absolute bottom-0 right-0 opacity-40 sm:opacity-80 transition-transform duration-300 hover:scale-110"
+          style={{ zIndex: 10 }}
         >
-          <img src={apple} alt="" className="max-w-[200px]" />
+          <img src={apple} alt="" className="max-w-[180px]" />
         </div>
         <div
           data-aos="fade"
-          className="absolute top-1/2 -translate-y-1/2 left-1/3 -translate-x-1/2 opacity-50 sm:opacity-100 transition-transform duration-300 hover:scale-110"
+          className="absolute top-1/2 -translate-y-1/2 left-1/3 -translate-x-1/2 opacity-40 sm:opacity-80 transition-transform duration-300 hover:scale-110"
+          style={{ zIndex: 10 }}
         >
-          <img src={kiwi} alt="" className="max-w-[180px]" />
+          <img src={kiwi} alt="" className="max-w-[160px]" />
         </div>
       </div>
     </>

@@ -24,17 +24,17 @@ const DropdownLinks = [
   {
     id: 1,
     name: "Vegetables",
-    link: "/#",
+    link: "/categories/vegetables",
   },
   {
     id: 2,
     name: "Fruits",
-    link: "/#",
+    link: "/categories/fruits",
   },
   {
     id: 3,
     name: "Grains",
-    link: "/#",
+    link: "/categories/grains",
   },
 ];
 
@@ -87,7 +87,7 @@ const Navbar = ({ HandlePopup }) => {
               <li className="relative cursor-pointer group">
                 <a
                   href="/categories"
-                  className="inline-block hover:text-primary text-xl font-semibold flex items-center gap-1 py-2"
+                  className="inline-block hover:text-primary text-xl font-semibold items-center gap-1 py-2"
                 >
                   Categories
                   <FaCaretDown className="group-hover:rotate-180 duration-300" />
@@ -182,10 +182,14 @@ const Navbar = ({ HandlePopup }) => {
                 </li>
               ))}
               <li className="cursor-pointer group relative">
-                <div className="flex items-center justify-between hover:text-primary text-xl font-semibold py-2">
+                <Link
+                  to="/categories"
+                  className="flex items-center justify-between hover:text-primary text-xl font-semibold py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
                   Categories
                   <FaCaretDown />
-                </div>
+                </Link>
                 <ul className="pl-4 mt-2">
                   {DropdownLinks.map(({ id, name, link }) => (
                     <li key={id}>

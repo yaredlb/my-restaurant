@@ -10,7 +10,7 @@ import Fruits from "./components/Categories/Fruits";
 import Grains from "./components/Categories/Grains";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import CategoriesContent from "./components/Categories/CategoriesContent";
+import Categories from "./components/Categories/Categories";
 
 const App = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -36,7 +36,7 @@ const App = () => {
           <Route path="/" element={<Home HandlePopup={HandlePopup} />} />
           <Route path="/about" element={<About HandlePopup={HandlePopup} />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/categories" element={<CategoriesContent HandlePopup={HandlePopup} />} />
+          <Route path="/categories" element={<Categories />} />
           <Route path="/categories/vegetables" element={<Vegetables />} />
           <Route path="/categories/fruits" element={<Fruits />} />
           <Route path="/categories/grains" element={<Grains />} />
