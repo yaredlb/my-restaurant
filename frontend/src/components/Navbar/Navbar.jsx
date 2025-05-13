@@ -85,13 +85,13 @@ const Navbar = ({ HandlePopup }) => {
 
               {/* dropdown and links */}
               <li className="relative cursor-pointer group">
-                <a
-                  href="/categories"
-                  className="inline-block hover:text-primary text-xl font-semibold items-center gap-1 py-2"
+                <Link
+                  to="/categories"
+                  className="inline-flex hover:text-primary text-xl font-semibold items-center gap-1 py-2"
                 >
                   Categories
                   <FaCaretDown className="group-hover:rotate-180 duration-300" />
-                </a>
+                </Link>
                 {/* Dropdown section */}
                 <div className="absolute z-[9999] hidden group-hover:block w-[200px] bg-white text-black shadow-md p-2 rounded-md">
                   <ul>
