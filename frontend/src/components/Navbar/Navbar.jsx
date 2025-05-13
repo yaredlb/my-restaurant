@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { FaCaretDown, FaUser, FaBars, FaTimes, FaSearch } from "react-icons/fa";
 
 const NavLinks = [
@@ -10,12 +11,12 @@ const NavLinks = [
   {
     id: 2,
     name: "About",
-    link: "/#",
+    link: "/about",
   },
   {
     id: 3,
     name: "Contact",
-    link: "/#",
+    link: "/contact",
   },
 ];
 
@@ -23,7 +24,7 @@ const DropdownLinks = [
   {
     id: 1,
     name: "Vegetables",
-    link: "/",
+    link: "/#",
   },
   {
     id: 2,
@@ -73,19 +74,19 @@ const Navbar = ({ HandlePopup }) => {
             <ul className="flex gap-10 items-center">
               {NavLinks.map(({ id, name, link }) => (
                 <li key={id}>
-                  <a
-                    href={link}
+                  <Link
+                    to={link}
                     className="hover:text-primary text-xl font-semibold"
                   >
                     {name}
-                  </a>
+                  </Link>
                 </li>
               ))}
 
               {/* dropdown and links */}
               <li className="relative cursor-pointer group">
                 <a
-                  href="/#"
+                  href="/categories"
                   className="inline-block hover:text-primary text-xl font-semibold flex items-center gap-1 py-2"
                 >
                   Categories
@@ -94,16 +95,30 @@ const Navbar = ({ HandlePopup }) => {
                 {/* Dropdown section */}
                 <div className="absolute z-[9999] hidden group-hover:block w-[200px] bg-white text-black shadow-md p-2 rounded-md">
                   <ul>
-                    {DropdownLinks.map(({ id, name, link }) => (
-                      <li key={id}>
-                        <a
-                          href={link}
-                          className="text-xl inline-block w-full rounded-md p-2 hover:bg-primary/20"
-                        >
-                          {name}
-                        </a>
-                      </li>
-                    ))}
+                    <li>
+                      <Link
+                        to="/categories/vegetables"
+                        className="text-xl inline-block w-full rounded-md p-2 hover:bg-primary/20"
+                      >
+                        Vegetables
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/categories/fruits"
+                        className="text-xl inline-block w-full rounded-md p-2 hover:bg-primary/20"
+                      >
+                        Fruits
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/categories/grains"
+                        className="text-xl inline-block w-full rounded-md p-2 hover:bg-primary/20"
+                      >
+                        Grains
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               </li>
@@ -157,13 +172,13 @@ const Navbar = ({ HandlePopup }) => {
             <ul className="flex flex-col gap-4">
               {NavLinks.map(({ id, name, link }) => (
                 <li key={id}>
-                  <a
-                    href={link}
+                  <Link
+                    to={link}
                     className="hover:text-primary text-xl font-semibold block"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {name}
-                  </a>
+                  </Link>
                 </li>
               ))}
               <li className="cursor-pointer group relative">
@@ -174,13 +189,13 @@ const Navbar = ({ HandlePopup }) => {
                 <ul className="pl-4 mt-2">
                   {DropdownLinks.map(({ id, name, link }) => (
                     <li key={id}>
-                      <a
-                        href={link}
+                      <Link
+                        to={link}
                         className="hover:text-primary text-lg font-semibold block py-1"
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         {name}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>

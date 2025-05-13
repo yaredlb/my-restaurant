@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
-import Hero from "./components/Hero/Hero";
-import Banner from "./components/Banner/Banner";
-import WhyChoose from "./components/WhyChoose/WhyChoose";
-import About from "./components/About/About";
-import Footer from "./components/Footer/Footer";
 import Popup from "./components/Popup/Popup";
+import Home from "./components/Home/Home";
+import About from "./components/About/About";
+import Contact from "./components/Contact/Contact";
+import Vegetables from "./components/Categories/Vegetables";
+import Fruits from "./components/Categories/Fruits";
+import Grains from "./components/Categories/Grains";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import CategoriesContent from "./components/Categories/CategoriesContent";
 
 const App = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -26,17 +29,22 @@ const App = () => {
   }, []);
 
   return (
-    <div className="overflow-x-hidden">
-      <Navbar HandlePopup={HandlePopup} />
-      <Hero />
-      <Banner />
-      <WhyChoose />
-      <About HandlePopup={HandlePopup} />
-      <Banner />
-      <Footer />
-      <Popup showPopup={showPopup} setShowPopup={setShowPopup} />
-    </div>
+    <Router>
+      <div className="overflow-x-hidden">
+        <Navbar HandlePopup={HandlePopup} />
+        <Routes>
+          <Route path="/" element={<Home HandlePopup={HandlePopup} />} />
+          <Route path="/about" element={<About HandlePopup={HandlePopup} />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/categories" element={<CategoriesContent HandlePopup={HandlePopup} />} />
+          <Route path="/categories/vegetables" element={<Vegetables />} />
+          <Route path="/categories/fruits" element={<Fruits />} />
+          <Route path="/categories/grains" element={<Grains />} />
+        </Routes>
+        <Popup showPopup={showPopup} setShowPopup={setShowPopup} />
+      </div>
+    </Router>
   );
 };
- 
+
 export default App;

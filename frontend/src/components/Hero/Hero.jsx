@@ -28,7 +28,7 @@ const Hero = () => {
 
   return (
     <>
-      <div style={BgStyle} className="relative z-[-1]">
+      <div style={BgStyle}>
         <div className="container py-16 sm:py-0">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 place-items-center min-h-[600px]">
             {/* text-content section */}
@@ -47,11 +47,7 @@ const Hero = () => {
                 Delicious Meals Delivered to Your Door From $132.95 per week
               </p>
               {/* button section */}
-              <div
-                data-aos="fade-up"
-                data-aos-delay="500"
-                className="group inline-block"
-              >
+              <div data-aos="fade-up" data-aos-delay="500" className="inline-block">
                 <PrimaryButton />
               </div>
             </div>
