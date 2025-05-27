@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Logo from "../../assets/png/icon.png";
 import { FaCaretDown, FaUser, FaBars, FaTimes, FaSearch } from "react-icons/fa";
 
 const NavLinks = [
@@ -55,10 +56,10 @@ const Navbar = ({ HandlePopup }) => {
       <div data-aos="fade" className="bg-white shadow-md fixed w-full z-50">
         <div className="container flex justify-between items-center py-4 sm:py-3">
           {/* logo section  */}
-          <div className="font-bold text-3xl text-primary font-cursive cursor-pointer select-none">
-            GoodFood
-          </div>
-
+          <Link to="/" className="flex items-center font-bold text-3xl text-primary font-cursive cursor-pointer select-none">
+            <img src={Logo} alt="GoodFood Logo" className="h-8 w-8" />
+            <span className="ml-0">GoodFood</span>
+          </Link>
           {/* search bar for desktop */}
           <div className="hidden md:flex items-center border border-gray-300 rounded-md px-2 py-1">
             <input
@@ -68,7 +69,6 @@ const Navbar = ({ HandlePopup }) => {
             />
             <FaSearch className="text-gray-500 cursor-pointer" />
           </div>
-
           {/* Navlinks section */}
           <div className="hidden md:block">
             <ul className="flex gap-10 items-center">
@@ -135,7 +135,6 @@ const Navbar = ({ HandlePopup }) => {
               </li>
             </ul>
           </div>
-
           {/* mobile menu button */}
           <div className="md:hidden flex items-center gap-4">
             <button

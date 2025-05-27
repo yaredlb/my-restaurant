@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import HeroBg from "../../assets/heroBg.png";
+import LocationMap from "../LocationMap";
 
 const bgStyle = {
   backgroundImage: `url(${HeroBg})`,
@@ -29,6 +30,8 @@ const Contact = () => {
     // Placeholder for form submission logic
     setSubmitted(true);
   };
+
+  const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
   return (
     <div style={bgStyle}>
@@ -90,6 +93,9 @@ const Contact = () => {
             </button>
           </form>
         )}
+        <div className="mt-10">
+          <LocationMap apiKey={googleMapsApiKey} />
+        </div>
       </div>
     </div>
   );
